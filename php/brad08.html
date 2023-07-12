@@ -1,0 +1,13 @@
+<input id="x" />
++
+<input id="y" />
+<input type="button" value="=" onclick="add()" />
+<span id="here"></span>
+<script>
+    function add(){
+        var x = document.getElementById("x").value;
+        var y = document.getElementById("y").value;
+        var v = parseInt(x) + parseInt(y);
+        document.getElementById("here").innerHTML = v;
+    }
+</script>
