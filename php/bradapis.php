@@ -44,6 +44,7 @@
         protected $speed;
 
         function __construct(){
+            echo 'Bike';
             $this->speed = 0;
         }
 
@@ -62,6 +63,13 @@
 
     class Scooter extends Bike {
         private $gear;
+
+        function __construct(){
+            parent::__construct();
+            echo 'Scooter';
+        }
+
+
         function upSpeed(){
             if ($this->gear > 0){
                 $this->speed = $this->speed < 1 ? 1 : $this->speed * 1.4 * $this->gear;

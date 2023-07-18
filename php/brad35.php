@@ -13,9 +13,12 @@
     //echo $myBike->speed;
 
     $myScooter = new Scooter();
-    $myScooter->upSpeed();$myScooter->upSpeed();$myScooter->upSpeed();
+    $myScooter->changeGear(1);
+    $myScooter->upSpeed();
+    $myScooter->upSpeed();$myScooter->upSpeed();
     $myScooter->upSpeed();
     echo $myScooter->getSpeed();
+
 
 
 
