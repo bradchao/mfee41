@@ -9,15 +9,20 @@
 
     $mysqli = new mysqli('localhost','root','root', 'iii', 3306);
     $mysqli->set_charset('utf8');
+
+    $mysqli->query('DELETE FROM food');
+    $mysqli->query('ALTER TABLE food AUTO_INCREMENT = 1');
+
     $sql = 'INSERT INTO food (name,tel,addr,hostwords,city,town,pic,lat,lng) '.
             'VALUES (?,?,?,?,?,?,?,?,?)';
     $stmt = $mysqli->prepare($sql);
+
     foreach( $data as $k => $row){
         echo "{$k} : {$row->City} : {$row->Name}<br />";
-        $stmt->bind_param('sssssssdd',$row->Name,$row->Tel,$row->Address,
-        $row->HostWords,$row->City,$row->Town,
-        $row->PicURL,$row->Latitude,$row->Longitude);
-        $stmt->execute();
+            $stmt->bind_param('sssssssdd',$row->Name,$row->Tel,$row->Address,
+            $row->HostWords,$row->City,$row->Town,
+            $row->PicURL,$row->Latitude,$row->Longitude);
+            $stmt->execute();
     }
 
 ?>
