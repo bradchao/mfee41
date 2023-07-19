@@ -1,6 +1,24 @@
+<script>
+    var xhttp = new XMLHttpRequest();
+    function checkAccount(){
+        console.log('debug');
+        xhttp.onreadystatechange = function(){
+            if (xhttp.readyState == 4 && xhttp.status == 200){
+                document.getElementById('mesg').innerHTML = 
+                    xhttp.responseText;
+            }
+        };
+        var account = document.getElementById('account').value;
+        xhttp.open("GET", "brad49.php?account=" + account, true);
+        xhttp.send();        
+    }
+
+</script>
 <meta charset="utf-8" />
-<form action="brad44.php" method="post">
-    Account: <input type="text" name="account" /><br />
+<form action="brad44.php" method="post" onsubmit="">
+    Account: <input type="text" id='account' name="account" 
+        onblur="checkAccount()"/>
+    <span id="mesg"></span><br />
     Password: <input type="password" name="passwd" /><br />
     Realname: <input type="text" name="realname" /><br />
     <input type="submit" value="Register" />
