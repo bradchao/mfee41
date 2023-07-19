@@ -1,0 +1,20 @@
+<script>
+    var xhttp = new XMLHttpRequest();
+
+    function test1(){
+        xhttp.onreadystatechange = function(){
+            if (xhttp.readyState == 4 && xhttp.status == 200){
+                document.getElementById('lottery').innerHTML 
+                    = xhttp.responseText;
+            }
+        };
+
+        xhttp.open("GET", "brad49.php", true);
+        xhttp.send();        
+    }
+
+    //setInterval(test1, 1000);
+
+</script>
+<input type="button" value="test1" onclick="test1()" /><br />
+<div id="lottery"></div>
