@@ -13,10 +13,14 @@
     $stmt->execute();
     $result = $stmt->get_result();
 
+    $root = [];
     while ($row = $result->fetch_object()){
-        echo "{$row->id} : {$row->name}<br />";
+        //echo "{$row->id} : {$row->name}<br />";
+        $root[] = $row;
     }
 
+    $json = json_encode($root);
+    echo $json;
 
 
 
