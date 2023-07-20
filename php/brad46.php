@@ -16,7 +16,7 @@
             $stmt->fetch();
             if (password_verify($passwd, $hasppasswd)){
                 // OK
-                header('Location: brad47.php');
+                header('Location: brad47.html');
             }else{
                 // passwd error
                 header('Location: brad45.html');

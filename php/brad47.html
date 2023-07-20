@@ -1,0 +1,41 @@
+<meta charset="utf-8" />
+<script>
+    var page = 1;
+    var xhttp = new XMLHttpRequest();
+
+    function fetchPageData(){
+        xhttp.onreadystatechange = callback;
+        var url = 'brad48.php?page=' + page;
+        xhttp.open('get', url, true);
+        xhttp.send();
+    }
+
+    function callback(){
+        if (xhttp.readyState == 4 && xhttp.status == 200){
+
+        }
+    }
+
+    function prev(){
+        page--;
+        fetchPageData();
+    }
+    function next(){
+        page++;
+        fetchPageData();
+    }
+
+    fetchPageData();
+</script>
+
+<h1>Brad Big Company</h1>
+<hr />
+<input type="button" value="Prev" onclick="prev()"/>
+<input type="button" value="Next" onclick="next()"/>
+<hr />
+<table border="1" width="100%">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+</table>
