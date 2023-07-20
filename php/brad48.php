@@ -1,0 +1,23 @@
+<?php
+    if (!isset($_GET['page'])) return;
+    $rpp = 10;
+    $page = $_GET['page'];
+    $start = ($page - 1) * $rpp;
+
+    $mysqli = new mysqli('localhost', 'root', 'root', 'iii', 3306);
+    $mysqli->set_charset('utf8');
+
+    $sql = 'SELECT * FROM food ORDER BY id LIMIT ?, ?';
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param('ii', $start, $rpp);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    while ($row = $result->fetch_object()){
+        echo "{$row->id} : {$row->name}<br />";
+    }
+
+
+
+
+?>
