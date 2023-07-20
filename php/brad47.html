@@ -12,7 +12,12 @@
 
     function callback(){
         if (xhttp.readyState == 4 && xhttp.status == 200){
-
+            var root = JSON.parse(xhttp.responseText);
+            console.log(root.length);
+            for (var i=0; i<root.length; i++){
+                var row = root[i];
+                console.log(row.id + ":" + row.name);
+            }
         }
     }
 
