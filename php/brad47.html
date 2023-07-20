@@ -5,9 +5,11 @@
 
     function fetchPageData(){
         xhttp.onreadystatechange = callback;
-        var url = 'brad48.php?page=' + page;
-        xhttp.open('get', url, true);
-        xhttp.send();
+        var url = 'brad50.php';
+        xhttp.open('post', url, true);
+        xhttp.setRequestHeader("Content-type", 
+            "application/x-www-form-urlencoded");
+        xhttp.send('page=' + page);    
     }
 
     function callback(){
@@ -17,21 +19,29 @@
             // 清除 第二列以後的 tr
             var trs = table.getElementsByTagName('tr');
 
-            for (var i=1; i<trs.length; i++){
-                table.removeChild(trs[i]);
+            var len = trs.length;
+            for (var i=1; i<len; i++){
+                table.removeChild(trs[1]);
             }
 
             var root = JSON.parse(xhttp.responseText);
             console.log(root.length);
             for (var i=0; i<root.length; i++){
                 var row = root[i];
-                console.log(row.id + ":" + row.name);
+                //console.log(row.id + ":" + row.name);
 
                 var tr = document.createElement('tr');
                 var td_id = document.createElement('td');
                 td_id.innerHTML = row.id; tr.appendChild(td_id);
                 var td_name = document.createElement('td');
                 td_name.innerHTML = row.name; tr.appendChild(td_name);
+                var td_tel = document.createElement('td');
+                td_tel.innerHTML = row.tel; tr.appendChild(td_tel);
+
+                var td_pic = document.createElement('td');
+                td_pic.innerHTML = '<img src="' + row.pic + '" width="160px" height="90x" />'; 
+                tr.appendChild(td_pic);
+                
                 table.appendChild(tr);
             }
         }
@@ -58,5 +68,7 @@
     <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Phone</th>
+        <th>Image</th>
     </tr>
 </table>

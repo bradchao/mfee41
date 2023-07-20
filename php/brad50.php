@@ -1,6 +1,6 @@
 <?php
-    //if (!isset($_GET['page'])) return;
-    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    //if (!isset($_POST['page'])) return;
+    $page = isset($_POST['page']) ? $_POST['page'] : 1;
 
     $rpp = 10;
     //$page = $_GET['page'];
