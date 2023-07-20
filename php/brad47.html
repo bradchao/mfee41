@@ -12,11 +12,27 @@
 
     function callback(){
         if (xhttp.readyState == 4 && xhttp.status == 200){
+            var table = document.getElementById('table');
+
+            // 清除 第二列以後的 tr
+            var trs = table.getElementsByTagName('tr');
+
+            for (var i=1; i<trs.length; i++){
+                table.removeChild(trs[i]);
+            }
+
             var root = JSON.parse(xhttp.responseText);
             console.log(root.length);
             for (var i=0; i<root.length; i++){
                 var row = root[i];
                 console.log(row.id + ":" + row.name);
+
+                var tr = document.createElement('tr');
+                var td_id = document.createElement('td');
+                td_id.innerHTML = row.id; tr.appendChild(td_id);
+                var td_name = document.createElement('td');
+                td_name.innerHTML = row.name; tr.appendChild(td_name);
+                table.appendChild(tr);
             }
         }
     }
@@ -38,7 +54,7 @@
 <input type="button" value="Prev" onclick="prev()"/>
 <input type="button" value="Next" onclick="next()"/>
 <hr />
-<table border="1" width="100%">
+<table id="table" border="1" width="100%">
     <tr>
         <th>ID</th>
         <th>Name</th>
