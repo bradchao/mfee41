@@ -83,5 +83,22 @@
         }
     }
 
+    class Member {
+        private $id, $account, $realname;
+        public function __construct($id, $accunt, $realname){
+            $this->id = $id;
+            $this->account = $accunt;
+            $this->realname = $realname;
+        }
+        public function __get($id){
+            // xxx->id
+            return $this->id;
+        }
+
+        public function getId(){
+            // xxx->getId()
+            return $this->id;
+        }
+    }
 
 ?>

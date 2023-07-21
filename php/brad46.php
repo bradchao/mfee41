@@ -1,5 +1,7 @@
 <meta charset="utf-8" />
 <?php
+    include 'bradapis.php';
+    session_start();
     if (isset($_POST['account']) && isset($_POST['passwd'])){
         $account = $_POST['account']; $passwd = $_POST['passwd'];
 
@@ -16,7 +18,12 @@
             $stmt->fetch();
             if (password_verify($passwd, $hasppasswd)){
                 // OK
-                header('Location: brad47.html');
+                $_SESSION['id'] = $id;
+                $_SESSION['account'] = $account;
+                $_SESSION['realname'] = $realname;
+                $_SESSION['member'] = new Member($id, $account, $realname);
+                
+                header('Location: brad47.php');
             }else{
                 // passwd error
                 header('Location: brad45.html');

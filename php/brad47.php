@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['id'])) header('Location: brad46.php');
+    $username = $_SESSION['realname'];
+?>
 <meta charset="utf-8" />
 <script>
     var page = 1;
@@ -60,6 +65,10 @@
 </script>
 
 <h1>Brad Big Company</h1>
+<hr />
+Welcome, <?php echo $username; ?>
+<hr />
+<a href="logout.php">Logout</a>
 <hr />
 <input type="button" value="Prev" onclick="prev()"/>
 <input type="button" value="Next" onclick="next()"/>

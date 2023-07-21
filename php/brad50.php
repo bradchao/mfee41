@@ -1,4 +1,7 @@
 <?php
+    session_start();
+    if (!isset($_SESSION['id'])) header('Location: brad46.php');
+    
     //if (!isset($_POST['page'])) return;
     $page = isset($_POST['page']) ? $_POST['page'] : 1;
 
